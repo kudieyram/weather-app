@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function HomeComponent() {
 
-    const postAPI = "https://jsonplaceholder.typicode.com/posts"
+    const postAPI = "http://api.weatherstack.com/current?access_key=3500afaf26cabe97664b36cef14f09ff&query=New York"
 
     useEffect(() => {
         axios
