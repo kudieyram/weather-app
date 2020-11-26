@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function HomeComponent() {
 
-    const postAPI = "http://api.weatherstack.com/current?access_key=3500afaf26cabe97664b36cef14f09ff&query=New York"
+    const postAPI = "http://api.weatherstack.com/current?access_key=3500afaf26cabe97664b36cef14f09ff&query=NewYork"
 
     useEffect(() => {
         axios
@@ -14,7 +14,8 @@ function HomeComponent() {
       }, );
 
     return (
-        <div>
+        <div className="login-wrapper">
+            
             
         </div>
     )
