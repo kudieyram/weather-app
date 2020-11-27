@@ -23,3 +23,10 @@
   font-size: 15px;
   font-weight: bold;
 }
+
+.app{
+  background-image: url'./images/cold-bn.jpeg';
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4 ease-out;
+}

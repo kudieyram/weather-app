@@ -1,6 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Ubuntu", sans-serif;
+}
+
 .login-wrapper{
-  background-color: rgb(201, 192, 241);
+  background-color: rgb(176, 226, 241);
   height: 2000px;
   margin: 0;
   padding: 0;
 }
+
+/* .app{
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0.52),
+      rgba(0, 195, 255, 0.73)
+    ),
+    url("https://img.xda-cdn.com/DCJ1iycUAmNKPNGdcZwUw2U5uCA=/http%3A%2F%2Fuploads.tapatalk-cdn.com%2F20160227%2Fe3d71a6573e3cba3516006e01f77d955.jpg");
+  background-repeat: no-repeat;
+  transition: 0.2s ease;
+} */
+
+main{
+  min-height: 100vh;
+  padding: 25px;
+}
+
+.search-bar{
+  color: black;
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  padding: 0px;
+  border: none;
+  outline: none;
+  appearance: none;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 0px 0px rgba(53, 53, 53, 0.5);
+  background: rgba(255, 255, 255, 0.52);
+  transition: 0.4s ease;
+}
+
+.search-box{
+  display: block;
+  width: 100%;
+  padding: 15px;
+
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(230, 225, 225, 0.918);
+  border-radius: 0px 0px 16px;
+  background-color: rgba(236, 233, 233, 0.5);
+  margin-top: 25px;
+  border-radius: 0px 0px 16px ;
+  margin-top: -25px;
+
+  box-shadow: 0px 5px rgba(0,0,0,0.2);
+
+  color: #313131;
+  font-size: 25px;
+}
+
+.location{
+  color: rgb(3, 2, 2);
+  font-size: 30px;
+  text-align: center;
+  text-shadow: 0px 0px rgba(58, 53, 53, 0.73);
+}
+
+/* .location-bar{
+  color: rgb(3, 2, 2);
+  font-size: 30px;
+  text-align: center;
+  text-shadow: 0px 0px rgba(58, 53, 53, 0.73);
+
+} */
+
+.location-box{
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 300px;
+  font-style: italic;
+  text-align: centre;
+  text-shadow: 2px, 2px, rgba(50,50,70,0.73);
+}
+
+
+.date{
+  color: #0c0303;
+  font-size: 20px;
+  font-weight: 300px;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 2px, 5px, rgba(50,50,70,0.73);
+}
+
+.weather-box{
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+    font-weight: 700;
+    text-shadow: 3px 3px rgba(58, 53, 53, 0.73);
+    text-align: center;
+  }
+
+
+.temp{
+  color: white;
+  position: relative;
+  display: inline-block;
+  margin: 30px auto;
+  padding: 15px 25px;
+  font-size: 100px;
+  font-weight: 700;
+  background-color: rgba(181, 91, 241, 0.1);
+  border-radius: 16px;
+  box-shadow: 3px 3px 3px rgba(58, 53, 53, 0.73);
+  text-shadow: 3px 3px 3px rgba(58, 53, 53, 0.73);
+
+}
+
+.weather{
+    color: white;
+    font-size: 45px;
+    font-weight: 700;
+    text-shadow: 3px 3px rgba(53, 53, 53, 0.73);
+  }
+  
