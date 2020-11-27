@@ -3,7 +3,7 @@ import '../index.css'
 
 const api = {
     key: '6253a19bc7876a9980d1770327c69cfd',
-    base: 'https://api.openweathermap.org/data/2.5/',
+    base: 'https://api.openweathermap.org/data/api',
 }
 
 function HomeComponent () {
@@ -16,13 +16,45 @@ function HomeComponent () {
         weather: {},
     })
 
+    const [countryState, setCountryState] = useState({
+        country: '',
+    })
+
+    const [cityState, setCityState] = useState({
+        city: '',
+    })
+
     const handleQueryChange = (e) => {
-        setQueryState=e.target.value
+        setQueryState({
+            'query': e.target.value
+        })
+    }
+
+    const handleCountryChange = (e) =>{
+        setCountryState({
+            'country': e.target.value
+        })
     }
 
     const handleWeatherChange = (e) => {
-        setWeatherState=e.target.value    
+        setWeatherState({
+            'weather': e.target.value
+        })  
     }
+    
+    const handleCityChange = (e) =>{
+        setCityState({
+            'city': e.target.value
+        })
+    }
+
+    function handleSearchChange (e){
+        e.preventDefault();
+        if (countryState.country ==="" || cityState.city ===""){
+            alert("Provide valid country & City Try again")
+            return
+    }}
+
 
     const search = evt => {
                 if (evt.key === "enter") {
@@ -36,6 +68,7 @@ function HomeComponent () {
             }
 
         }
+
 
 
     const dateBuilder = (d) =>{
@@ -66,7 +99,7 @@ function HomeComponent () {
                         <div className='temp'>
                             15°C
                         </div>
-                        <div className='weather'> Sunny</div>
+                        <div className='weather'>Sunny</div>
                     </div>
                 </div>
             </main>
