@@ -7,6 +7,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+import NotFoundComponent from './component/NotFound';
 
 
 
@@ -25,6 +26,8 @@ function App() {
           <Route path="/dashboard">< HomeComponent/></Route>
 
           <Route exact path="/"><LogInComponent/></Route>
+
+          <Route><NotFoundComponent/></Route>
 
                 
         </Switch>
