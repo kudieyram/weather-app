@@ -31,28 +31,26 @@ function HomeComponent () {
         setCity(e.target.value)
     }
 
-    const error = (e) => {
+    
+    //#endregion
+
+
+    const search = (e) => { 
         e.preventDefault();
         if (country ==="" || city ===""){
             alert("Provide valid country & City. Try again")
             return
         }
-    }
 
-    //#endregion
-
-
-    const search = (e) => { 
-            error(e)
         if(country && city){ 
                     axios.get( `${api.base}?access_key=${api.key}&query=${country},${city}`)
-                        .then((result) => {
+                        .then((info) => {
                             setWeather({
-                                "temp":result.data.current.temperature,
-                                "humidity" : result.data.current.humidity
-                                
-                            });
-                            console.log(result);
+                                "temp":info.data.current.temperature,
+                                "humidity" : info.data.current.humidity
+                                });
+
+                            console.log(info)
                         })    
             }
 
@@ -85,9 +83,9 @@ function HomeComponent () {
                 <div>
                     <div className='weather-box'>
                         <div className='temp'>
-                            {weather.temp}°C
+                           Temp: {weather.temp}°C
                         </div>
-                        <div className='weather'><h1>{weather.humidity} %</h1></div>
+                        <div className='weather'><h1>Humidity: {weather.humidity} %</h1></div>
                     </div>
                 </div>
                     <form>
