@@ -11,17 +11,19 @@ const api = {
    
 function HomeComponent () {
 
+    // Defining the variable weather and specify the key and value I want to display on my home page
     const [weather, setWeather] = useState({
         "temp": "--",
          "humidity": "--",
     })
 
+    // Defining the variables, country and city. Added the country and city in the string so as to have "a placeholder" of these two.
     const [country, setCountry] = useState('Ghana')
 
     const [city, setCity] = useState('Accra')
 
-    //#region 
-   
+    // The functions below handling the various changes that happen on the setValue.
+
     const handleCountryChange = (e) => {
         setCountry(e.target.value)
     }
@@ -31,10 +33,7 @@ function HomeComponent () {
         setCity(e.target.value)
     }
 
-    
-    //#endregion
-
-
+    // This function handles search 
     const search = (e) => { 
         e.preventDefault();
         if (country ==="" || city ===""){
@@ -57,7 +56,7 @@ function HomeComponent () {
         }
 
 
-
+    //  This function defines the current date of the day
     const dateBuilder = (d) =>{
                 let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November','December'];
                 
@@ -82,10 +81,14 @@ function HomeComponent () {
 
                 <div>
                     <div className='weather-box'>
-                        <div className='temp'>
-                           Temp: {weather.temp}°C
+                        <div className='temp'> 
+                        <h1> Temp: {weather.temp}°C </h1>
                         </div>
-                        <div className='weather'><h1>Humidity: {weather.humidity} %</h1></div>
+
+                        <div className='weather'>
+                            <h1>Humidity: {weather.humidity} %</h1>
+                        </div>
+
                     </div>
                 </div>
                     <form>
