@@ -6,6 +6,15 @@
   left: 40%;
   top: 20%;
  }
+
+ .form{
+  margin-bottom: 15px;
+  background: #dddada;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  width: 50;
+ }
+
  .login-form form {
   margin-bottom: 15px;
   background: #dddada;

@@ -13,29 +13,21 @@ function LogInComponent() {
 
     const routeHistory = useHistory()
 
-    const [ emailState, setEmail] = useState({
-        email: "",
-    }) 
+    const [ email, setEmail] = useState('') 
 
-    const [ passwordState, SetPassword] = useState({
-        password: "",
-    })
+    const [ password, SetPassword] = useState('')
 
     function handleEmailChange (e){
-        setEmail({
-            "email": e.target.value
-        })
+        setEmail(e.target.value)
     }
 
     function handlePasswordChange (e){
-        SetPassword({
-            "password": e.target.value
-        })
+        SetPassword(e.target.value)
     }
 
     function handleLogin (e){
         e.preventDefault();
-        if (emailState.email ==="" || passwordState.password ===""){
+        if (email ==="" || password ===""){
             alert("Provide valid Email & Password. Try again")
             return
         }
@@ -51,11 +43,11 @@ function LogInComponent() {
             <form>
             <h2 className="text-center">Log in</h2>       
                 <div className="form-group">
-                    <input type="email" className="form-control" placeholder="Email" required="required" name="email" onChange={handleEmailChange} value={emailState.email}/>
+                    <input type="email" className="form-control" placeholder="Email" required="required" name="email" onChange={handleEmailChange} value={email}/>
                 </div>
 
             <div className="form-group">
-                <input type="password" className="form-control" placeholder="Password" required="required" name="password" onChange= {handlePasswordChange} value={passwordState.password}/>
+                <input type="password" className="form-control" placeholder="Password" required="required" name="password" onChange= {handlePasswordChange} value={password}/>
             </div>
             
             <div className="form-group">

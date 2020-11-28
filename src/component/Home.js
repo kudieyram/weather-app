@@ -1,68 +1,57 @@
 import React, {useState} from 'react'
 import '../index.css'
+import axios from 'axios'
+import 'bootstrap/dist/css/bootstrap.css' 
 
 const api = {
-    key: '6253a19bc7876a9980d1770327c69cfd',
-    base: 'https://api.openweathermap.org/data/api',
+    key: 'e2fd4194dc08d1b66a218315cbaa87ed',
+    base: 'http://api.weatherstack.com/current',
 }
 
+   
 function HomeComponent () {
 
-    const [queryState, setQueryState] = useState({
-        query:'',
+    const [weather, setWeather] = useState({
+        "temp": "--",
+         "humidity": "--",
     })
 
-    const [weatherState, setWeatherState] = useState({
-        weather: {},
-    })
+    const [country, setCountry] = useState('Ghana')
 
-    const [countryState, setCountryState] = useState({
-        country: '',
-    })
+    const [city, setCity] = useState('Accra')
 
-    const [cityState, setCityState] = useState({
-        city: '',
-    })
-
-    const handleQueryChange = (e) => {
-        setQueryState({
-            'query': e.target.value
-        })
+    //#region 
+   
+    const handleCountryChange = (e) => {
+        setCountry(e.target.value)
     }
 
-    const handleCountryChange = (e) =>{
-        setCountryState({
-            'country': e.target.value
-        })
+       
+    const handleCityChange = (e) => {
+        setCity(e.target.value)
     }
 
-    const handleWeatherChange = (e) => {
-        setWeatherState({
-            'weather': e.target.value
-        })  
-    }
-    
-    const handleCityChange = (e) =>{
-        setCityState({
-            'city': e.target.value
-        })
-    }
-
-    function handleSearchChange (e){
+    const error = (e) => {
         e.preventDefault();
-        if (countryState.country ==="" || cityState.city ===""){
-            alert("Provide valid country & City Try again")
+        if (country ==="" || city ===""){
+            alert("Provide valid country & City. Try again")
             return
-    }}
+        }
+    }
+
+    //#endregion
 
 
-    const search = evt => {
-                if (evt.key === "enter") {
-                    fetch( `${api.base}weather?q=${queryState}&units=metrics&APPID=${api.key}`)
-                        .then(result => Response.json())
-                        .then(result => {
-                            setQueryState('');
-                            setWeatherState(result);
+    const search = (e) => { 
+            error(e)
+        if(country && city){ 
+                    axios.get( `${api.base}?access_key=${api.key}&query=${country},${city}`)
+                        .then((result) => {
+                            setWeather({
+                                "temp":result.data.current.temperature,
+                                "humidity" : result.data.current.humidity
+                                
+                            });
                             console.log(result);
                         })    
             }
@@ -87,22 +76,36 @@ function HomeComponent () {
 
     return(
         <div className='login-wrapper'>
-            <main>
+               
                 <div className='search-bar'>
-                    <input type='text' className='search-bar' placeholder='Search...' value={queryState.query} onChange={handleQueryChange}/>
-                    <div className='location-box'></div>
-                    <div className='location'>Accra, Ghana</div>   
+                        <div className='location'>{city} , {country}</div>   
                     <div className='date'>{dateBuilder(new Date())}</div> 
                 </div>
+
                 <div>
-                    <div className='weather-box' value={weatherState.weather} onChange={handleWeatherChange}>
+                    <div className='weather-box'>
                         <div className='temp'>
-                            15°C
+                            {weather.temp}°C
                         </div>
-                        <div className='weather'>Sunny</div>
+                        <div className='weather'><h1>{weather.humidity} %</h1></div>
                     </div>
                 </div>
-            </main>
+                    <form>
+                        <div className="form-group">
+                            <input type="country" className="form-control" placeholder="Country" required="required" name="country" value={country} onChange={handleCountryChange}/>
+                        </div>
+
+                        <div className="form-group">
+                            <input type="city" className="form-control" placeholder="City" required="required" name="city" value={city} onChange={handleCityChange}/>
+                        </div>
+
+                        <div className="form-group">
+                            <button className="btn btn-primary btn-block"  onClick={search}>Search</button>
+                        </div>
+
+                    </form>
+
+                
         </div>
     )
    
@@ -114,67 +117,3 @@ export default HomeComponent;
 
 
 
-// function HomeComponent() {
-//     const [queryState, setQueryState] = useState({
-//         query: '',
-//     });
-       
-
-//     const [weather, setWeather] = useState({});
-
-//     const handleOnchange = (e) => {
-//         setQueryState({
-//             'query': e.target.value
-//         })
-//     }
-
-//         const search = evt => {
-//         if (evt.key === "enter") {
-//             fetch( `${api.base}weather?q=${queryState}&units=metrics&APPID=${api.key}`)
-//                 .then(result => Response.json())
-//                 .then(result => {
-//                     setQueryState('');
-//                     setWeather(result);
-//                     console.log(result);
-//                 })    
-//     }
-
-//     const dateBuilder = (d) =>{
-//         let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November','December'];
-        
-//         let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-//         let day = days[d.getDay()];
-//         let date = d.getDate();
-//         let month = months[d.getMonth()];
-//         let year = d.getFullYear();
-
-//         return  `${day} ${date} ${month} ${year}`
-
-//     }
-
-//     return (
-//         <div className='login-wrapper'>
-//             <main>
-//                 <div className='search-bar'>
-//                     <input type='text' className='search-bar'placeholder='Search...' onChange={handleOnchange} value= {queryState.query}>
-//                     </input>
-//                     <div className='location-box'></div>
-//                     <div className='location'>New York City, US</div>
-//                     <div className='date'>{dateBuilder(new Date())}</div>
-//                 </div>
-//                 <div className='weather-box'>
-//                     <div className='temp'>
-//                         15°C
-//                     </div>
-//                     <div className='weather'>Sunny</div>
-//                 </div>
-//             </main>
-            
-            
-//         </div>
-//     )
-// }
-// }
-
-// export default HomeComponent;

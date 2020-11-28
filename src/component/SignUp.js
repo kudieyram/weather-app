@@ -13,55 +13,39 @@ function SignUpComponent (){
     
     const routeHistory = useHistory()
 
-    const [ fullNameState, setFullNameState] = useState({
-        fullName:"",
-    })
+    const [ fullName, setFullName] = useState('')
 
-    const [ emailState,setEmailState] = useState({
-        email:"",
-    })
+    const [ email,setEmail] = useState('')
 
-    const [ passwordState, setPasswordState] = useState({
-        password:"",
-    })
+    const [ password, setPassword] = useState('')
 
-    const [ confirmPasswordState, setConfirmPasswordState] = useState({
-        confirmPassword:"",
-    })
+    const [ confirmPassword, setConfirmPassword] = useState('')
 
     
-    function handleFullNameChange (e){
-        setFullNameState({
-            fullName: e.target.value
-        })
+    const handleFullNameChange = (e) => {
+        setFullName( e.target.value)
     }
 
-    function handleEmailChange (e){
-        setEmailState({
-            email:e.target.value
-        })
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value)
     }
 
-    function handlePasswordChange (e){
-        setPasswordState({
-            password:e.target.value
-        })
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value)
     }
 
-    function handleConfirmPaaswordChange (e){
-        setConfirmPasswordState({
-            confirmPassword:e.target.value
-        })
+    const handleConfirmPasswordChange = (e) => {
+        setConfirmPassword(e.target.value)
     }
 
-    function handleSignUp (e){
+    const handleSignUp = (e) => {
         e.preventDefault();
-        if (fullNameState.fullName ==="" || emailState.email ==="" || passwordState.password ==="" || confirmPasswordState.confirmPassword ===""){
+        if (fullName ==="" || email ==="" || password ==="" || confirmPassword ===""){
             alert("Sign up unsuccessfully")
             return
         }
 
-        if (passwordState.password !== confirmPasswordState.confirmPassword){
+        if (password !== confirmPassword){
             alert("Password doesn't match")
             return
         }
@@ -77,19 +61,19 @@ function SignUpComponent (){
             <form>
                 <h2 className="text-center">Sign up</h2>       
                     <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Full Name" required="required" value={fullNameState.fullName} onChange={handleFullNameChange}/>
+                        <input type="text" className="form-control" placeholder="Full Name" required="required" value={fullName} onChange={handleFullNameChange}/>
                     </div>
 
                     <div className="form-group">
-                        <input type="email" className="form-control" placeholder="Email" required="required" value={emailState.email} onChange={handleEmailChange} />
+                        <input type="email" className="form-control" placeholder="Email" required="required" value={email} onChange={handleEmailChange} />
                     </div>
 
                     <div className="form-group">
-                        <input type="password" className="form-control" placeholder="Password" required="required" value={passwordState.password} onChange={handlePasswordChange}/>
+                        <input type="password" className="form-control" placeholder="Password" required="required" value={password} onChange={handlePasswordChange}/>
                     </div>
 
                     <div className="form-group">
-                        <input type="password" className="form-control" placeholder="Confirm Password" required="required" value={confirmPasswordState.password} onChange={handleConfirmPaaswordChange} />
+                        <input type="password" className="form-control" placeholder="Confirm Password" required="required" value={confirmPassword} onChange={handleConfirmPasswordChange} />
                     </div>
 
                     <div className="form-group">
