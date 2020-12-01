@@ -2,12 +2,14 @@ import React, {useState} from 'react'
 import '../index.css'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css' 
+import config from './config'
 
-
-const api = {
-    key: 'e2fd4194dc08d1b66a218315cbaa87ed',
-    base: 'http://api.weatherstack.com/current',
-}
+const BASE = config.base
+const KEY = config.key
+// const api = {
+//     key: 'e2fd4194dc08d1b66a218315cbaa87ed',
+//     base: 'http://api.weatherstack.com/current',
+// }
 
    
 function HomeComponent () {
@@ -43,7 +45,7 @@ function HomeComponent () {
         }
 
         if(country && city){ 
-                    axios.get( `${api.base}?access_key=${api.key}&query=${country},${city}`)
+                    axios.get( `${BASE}?access_key=${KEY}&query=${country},${city}`)
                         .then((info) => {
                             setWeather({
                                 "temp":info.data.current.temperature,
